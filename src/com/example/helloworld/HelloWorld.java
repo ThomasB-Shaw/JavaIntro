@@ -24,7 +24,7 @@ public class HelloWorld {
         int numberPayments = years * monthsInYear;
         System.out.println("Number of Payments = " + numberPayments);
 
-        double mortgage = principal * ((rate*Math.pow(1+monthlyRate , numberPayments)/(Math.pow(1+monthlyRate, numberPayments))-1));
+        double mortgage = principal * (monthlyRate * Math.pow(1 + monthlyRate , numberPayments)/(Math.pow(1 + monthlyRate, numberPayments) - 1));
 
         String mortgageFormatted = NumberFormat.getCurrencyInstance().format(mortgage);
         System.out.println("Total Mortgage Payment: " + mortgageFormatted);
