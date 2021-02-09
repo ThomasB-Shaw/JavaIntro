@@ -8,21 +8,37 @@ public class HelloWorld {
         final byte monthsInYear = 12;
         final byte percent = 100;
 
-        Scanner Scanner = new Scanner(System.in);
+        int principal = 0;
+        double monthlyRate = 0;
+        int numberPayments = 0;
 
-        System.out.print("Principal: ");
-        int principal = Scanner.nextInt();
-        System.out.println("Principal = " + principal);
+        Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Rate: ");
-        double rate = Scanner.nextDouble();
-        double monthlyRate = rate / percent / monthsInYear;
-        System.out.println("Rate = " + monthlyRate);
+        while(true) {
+            System.out.print("Principal: ");
+            principal = scanner.nextInt();
+            if(principal >= 1)
+                break;
+            System.out.println("Please enter a valid integer above 0");
+        }
 
-        System.out.print("Number of Payments: ");
-        byte years = Scanner.nextByte();
-        int numberPayments = years * monthsInYear;
-        System.out.println("Number of Payments = " + numberPayments);
+        while(true) {
+            System.out.print("Rate: ");
+            double rate = scanner.nextDouble();
+            monthlyRate = rate / percent / monthsInYear;
+            if(rate > 1 && rate < 30)
+                break;
+            System.out.println("Please enter a rate between 1% and 30%");
+        }
+
+        while(true) {
+            System.out.print("Number of Payments: ");
+            byte years = scanner.nextByte();
+            numberPayments = years * monthsInYear;
+            if(years < 50 )
+                break;
+            System.out.println("Please enter a valid integer less than 50");
+        }
 
         double mortgage = principal * (monthlyRate * Math.pow(1 + monthlyRate , numberPayments)/(Math.pow(1 + monthlyRate, numberPayments) - 1));
 
